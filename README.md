@@ -17,28 +17,75 @@ Haproxy 1.5+ do have a TCP health check feature for redis. Haproxy will be confi
 
 Sentinel will be running as a separate service. we'll need minimum 3 sentinel instances to monitor redis master instance. Our cluster will have quorum of 2 ie; two sentinel instances should agree / vote for a slave to be promoted as master incase of master failure.  
 
+[![redis-sentinel.jpg](https://s21.postimg.org/ccw0qpnh3/redis_sentinel.jpg)](https://postimg.org/image/4wwr4wzrn/)
+    
 ### Server setup
+
+> redis-server-001,002,003
+
+
+ - Install system updates
+ 
+
+    `yum update -y`
+
+ - Install remi repository
+ 
+
+    `rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm`
+    
+    `rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm`
+    
+
+ - Install redis
+ 
+
+    `yum --enablerepo=remi,remi-test install redis`
+
+ - Configure redis and redis-sentinel
+
+   Create redis-sentinel working directory
+   
+   `mkdir /var/lib/redis-sentinel`
+   
+   Download and install redis and redis-sentinel configuration from redis-server-001,002 and 003 directories
+
+   `chkconfig redis on ; chkconfig redis-sentinel on`
+   
+  ` service redis start ; service redis-sentinel on`
+    
 
 > haproxy-server-001
 
  - Install system updates
  
 
-    yum update -y
+    `yum update -y`
 
  - Install epel repository
  
 
-    yum -y install epel-release
+    `yum -y install epel-release`
 
  - Install haproxy
  
 
-    yum -y install haproxy ; chkconfig haproxy on
+    `yum -y install haproxy ; chkconfig haproxy on`
 
  - Configure haproxy
  
 
-    cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg_bak
+    `cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg_bak`
     
     Download and install haproxy configuration from haproxy-server-001 directory
+ 
+ - Start Haproxy service 
+ 
+
+    `service haproxy start`
+
+
+
+
+
+
