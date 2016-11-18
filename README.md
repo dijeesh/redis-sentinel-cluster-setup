@@ -2,15 +2,43 @@ Redis Sentinel High Availability Setup
 ===================
 
 
-Hey ! Follow this procedure to setup a High Available Redis Caching Layer. 
+Hey ! Follow this procedure to setup a High Available Redis Caching Layer.
 
-### Environment 
+### Environment
 
 > haproxy
 
-> redis 
+> redis
 
 > redis-sentinel
 
 
-Haproxy 1.5+ do have a TCP health check feature for redis. Haproxy will be configured in such a way that proxy connections will be forwarded to master instance only. Sentinel will constantly monitor the redis master instance and will promote slave node with lowest priority as next redis master.Redis will be configured in such a way that one node will be master and other two nodes will be configured as slaveof the master instance.
+Haproxy 1.5+ do have a TCP health check feature for redis. Haproxy will be configured in such a way that proxy connections will be forwarded to master instance only. Sentinel will constantly monitor the redis master instance and will promote slave node with lowest priority as next redis master in case of failure. Redis will be configured in such a way that one node will be master and other two nodes will be configured as slaveof the master instance.
+
+Sentinel will be running as a separate service. we'll need minimum 3 sentinel instances to monitor redis master instance. Our cluster will have quorum of 2 ie; two sentinel instances should agree / vote for a slave to be promoted as master incase of master failure.  
+
+### Server setup
+
+> haproxy-server-001
+
+ - Install system updates
+ 
+
+    yum update -y
+
+ - Install epel repository
+ 
+
+    yum -y install epel-release
+
+ - Install haproxy
+ 
+
+    yum -y install haproxy ; chkconfig haproxy on
+
+ - Configure haproxy
+ 
+
+    cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg_bak
+    
+    Download and install haproxy configuration from haproxy-server-001 directory
