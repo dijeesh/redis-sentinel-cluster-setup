@@ -17,7 +17,10 @@ Haproxy 1.5+ do have a TCP health check feature for redis. Haproxy will be confi
 
 Sentinel will be running as a separate service. we'll need minimum 3 sentinel instances to monitor redis master instance. Our cluster will have quorum of 2 ie; two sentinel instances should agree / vote for a slave to be promoted as master incase of master failure.  
 
+### Architecture Diagram 
+
 [![redis-sentinel.jpg](https://s21.postimg.org/ccw0qpnh3/redis_sentinel.jpg)](https://postimg.org/image/4wwr4wzrn/)
+    
     
 ### Server setup
 
@@ -54,7 +57,7 @@ Sentinel will be running as a separate service. we'll need minimum 3 sentinel in
    
   ` service redis start ; service redis-sentinel on`
     
-
+----
 > haproxy-server-001
 
  - Install system updates
@@ -85,6 +88,7 @@ Sentinel will be running as a separate service. we'll need minimum 3 sentinel in
     `service haproxy start`
 
 
+---
 
 
 
