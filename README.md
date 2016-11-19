@@ -88,7 +88,7 @@ At this point, you'll have
  
  3. Redis Sentinel services running on all 3 redis nodes
  
- 4. Haproxy Server and listerning on port 6379 of haproxy server instance and forwarding connections to master redis instance.
+ 4. Haproxy Server listerning on port 6379 and forwarding connections to master redis instance.
  
- 5. Upon master failure, redis-sentinel service will promote any slave into the master and haproxy's tcp health-check will detect next master and forward connections to the new master instance.
+ 5. Upon master failure, redis-sentinel service will promote a slave into the master and haproxy's tcp health-check will detect next master and forward connections to the new master instance.
  
