@@ -55,7 +55,7 @@ Sentinel will be running as a separate service. we'll need minimum 3 sentinel in
 
    `chkconfig redis on ; chkconfig redis-sentinel on`
    
-  ` service redis start ; service redis-sentinel on`
+  ` service redis start ; service redis-sentinel start`
     
 ----
 > haproxy-server-001
