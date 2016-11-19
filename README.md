@@ -29,7 +29,8 @@ Install system updates
 Install remi repository
 
 >rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+>
+>rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 
 Install redis
 
@@ -38,13 +39,15 @@ Install redis
 Configure redis and redis-sentinel
 
 >Create redis-sentinel working directory
-mkdir /var/lib/redis-sentinel
+>
+>mkdir /var/lib/redis-sentinel
 
 >Download and install redis and redis-sentinel configuration from redis-server-001,002 and 003 directories
 
 Start Services and add services into system startup
 
 >chkconfig redis on ; chkconfig redis-sentinel on
+>
 >service redis start ; service redis-sentinel start
 
 
@@ -67,11 +70,13 @@ Install haproxy
 Configure haproxy
 
 >cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg_bak
+>
 >Download and install haproxy configuration from haproxy-server-001 directory
 
 Start Haproxy service and service into system startup
 
 >service haproxy start
+>
 >chkconfig haproxy on
 
 ---
