@@ -1,0 +1,4 @@
+Replace : REDIS_001_IPADDR with Node1's IP Address
+Replace : REDIS_002_IPADDR with Node2's IP Address
+Replace : REDIS_003_IPADDR with Node3's IP Address
+Replace : CLUSTER_NAME with your identity 

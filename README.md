@@ -44,7 +44,7 @@ Configure redis and redis-sentinel
 
 >Download and install redis and redis-sentinel configuration from redis-server-001,002 and 003 directories
 
-Start Services and add services into system startup
+Bootstrap Redis HA enviorment - Start Services and add services into system startup
 
 >chkconfig redis on ; chkconfig redis-sentinel on
 >
