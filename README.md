@@ -92,3 +92,5 @@ At this point, you'll have
  
  5. Upon master failure, redis-sentinel service will promote a slave into the master and haproxy's tcp health-check will detect next master and forward connections to the new master instance.
  
+
+We setup multiple HAProxy instances and manage them using cluster management services. That's how we ensure redundancy and HA for haproxy instances.
